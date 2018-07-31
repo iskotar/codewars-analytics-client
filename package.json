@@ -2,6 +2,9 @@
   "name": "codewars-analytics-client",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "10.4.1"
+  },
   "dependencies": {
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
