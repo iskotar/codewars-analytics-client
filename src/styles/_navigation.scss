@@ -3,6 +3,7 @@
   //background: radial-gradient(circle at 0 0, $color1, lighten($color1, 10%));
   //border-bottom: 1px solid $color3;
   color: $color1;
+  margin-bottom: 2rem;
 
   .search-field {
     background-color: $color1;
@@ -51,7 +52,8 @@
     color: lighten($color1, 0%);
 
     &.active {
-      color: lighten($color1, 70%);
+      // color: lighten($color1, 20%);
+      border-bottom: 1px solid $color1;
     }
   }
 }
