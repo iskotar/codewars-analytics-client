@@ -42,15 +42,16 @@
     "to-slug-case": "^1.0.0"
   },
   "devDependencies": {
+    "babel-jest": "^23.4.2",
+    "dotenv": "^6.0.0",
     "eslint": "^5.2.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jest": "^21.15.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-react": "^7.5.1",
-    "prettier": "^1.13.7",
     "jest": "^23.4.2",
-    "babel-jest": "^23.4.2",
+    "prettier": "^1.13.7",
     "redux-devtools-extension": "^2.13.2"
   },
   "scripts": {

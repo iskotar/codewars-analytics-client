@@ -59,3 +59,13 @@ export function userLogout() {
     localStorage.clear();
   };
 }
+
+export function checkCodewarsUser(codewarsId) {
+  return dispatch =>
+    get(`/user/read/cw/${codewarsId}`).then(res => {
+      dispatch({
+        type: 'USER_INFO',
+        payload: res.data
+      });
+    });
+}

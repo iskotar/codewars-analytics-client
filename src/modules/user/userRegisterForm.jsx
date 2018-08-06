@@ -7,13 +7,14 @@ import _ from 'lodash';
 import { Helmet } from 'react-helmet';
 import { TextField } from '../utils/form/form';
 import { email as validEmail, minLength5, required } from '../utils/form/validators';
-import { userRegister } from './_actions/userActions';
+import { userRegister, checkCodewarsUser } from './_actions/userActions';
 
 class UserRegisterForm extends Component {
   constructor(props) {
     super(props);
     this.state = {};
     this.formSubmit = this.formSubmit.bind(this);
+    this.checkCodewarsUser = this.checkCodewarsUser.bind(this);
   }
 
   formSubmit(e) {
@@ -22,6 +23,11 @@ class UserRegisterForm extends Component {
     const email = this.props.userRegisterForm.values.email;
     const password = this.props.userRegisterForm.values.password;
     this.props.userRegister(email, password);
+  }
+
+  checkCodewarsUser(id){
+    console.log(id);
+    this.props.checkCodewarsUser('Viktor%20Bogutskii')
   }
 
   form() {
@@ -53,6 +59,7 @@ class UserRegisterForm extends Component {
             />
 
             <Row>
+              https://www.codewars.com/users/Viktor%20Bogutskii
               <Col sm={9}>
                 <Field
                   placeholder="Codewars link"
@@ -63,9 +70,8 @@ class UserRegisterForm extends Component {
                   descr={'Go to Codewars profile, copy url and paste it here'}
                 />
               </Col>
-
               <Col sm={3}>
-                <Button type="submit" color="primary" value="Register" block>
+                <Button color="primary" block onClick={this.checkCodewarsUser}>
                   Check
                 </Button>
               </Col>
@@ -103,6 +109,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  checkCodewarsUser: (codewarsId) => dispatch(checkCodewarsUser(codewarsId)),
   userRegister: (email, password) => dispatch(userRegister(email, password))
 });
 
