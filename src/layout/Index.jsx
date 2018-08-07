@@ -10,7 +10,7 @@ import Footer from './Footer';
 import Home from '../modules/home/home';
 import Warning from '../modules/utils/warning/warning';
 import Alert from '../modules/utils/alert/alert';
-import UserRegisterForm from '../modules/user/userRegisterForm';
+import UserRegisterForm from '../modules/user/register/userRegisterForm';
 import UserLoginForm from '../modules/user/userLoginForm';
 import UserList from '../modules/user/userList';
 import UserProfile from '../modules/user/profile/userProfile';

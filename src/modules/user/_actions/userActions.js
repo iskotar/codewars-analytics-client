@@ -1,11 +1,12 @@
 import { push } from 'react-router-redux';
 import { get, post } from '../../utils/httpRequest/httpMethods';
 
-export function userRegister(email, password) {
+export function userRegister(email, password, codewarsUsername) {
   return dispatch =>
     post('/user', {
       email,
-      password
+      password,
+      codewarsUsername
     }).then(res => {
       dispatch({
         type: 'USER_REGISTER',
