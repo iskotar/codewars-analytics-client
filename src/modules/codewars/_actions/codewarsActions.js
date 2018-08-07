@@ -5,13 +5,17 @@ export function checkCodewarsUser(codewarsId) {
   return dispatch =>
     get(`/user/read/cw/${codewarsId}`)
       .then(res => {
-        dispatch({
-          type: 'CODEWARS_INFO',
-          payload: res.data
-        });
-        return res.data;
+        if (res.status === 200) {
+          dispatch({
+            type: 'CODEWARS_INFO',
+            payload: res.data
+          });
+          return res.data;
+        } else {
+          throw Error('Codewars error');
+        }
       })
-      .then(data => {
-        dispatch(change('userRegister', 'codewarsLink', data.username));
+      .catch(err => {
+        dispatch(change('codewarsChecker', 'codewarsLink', ''));
       });
 }
