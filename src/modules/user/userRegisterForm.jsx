@@ -12,7 +12,8 @@ import {
   required,
   codewarsUserLink
 } from '../utils/form/validators';
-import { userRegister, checkCodewarsUser } from './_actions/userActions';
+import { userRegister } from './_actions/userActions';
+import { checkCodewarsUser } from './../codewars/_actions/codewarsActions';
 
 class UserRegisterForm extends Component {
   constructor(props) {
@@ -69,13 +70,14 @@ class UserRegisterForm extends Component {
             />
 
             <Row>
-              https://www.codewars.com/users/Viktor%20Bogutskii
+              <Col sm={12}>https://www.codewars.com/users/Viktor%20Bogutskii</Col>
               <Col sm={9}>
                 <Field
                   placeholder="Codewars link"
                   name="codewarsLink"
                   component={TextField}
                   type="text"
+                  disabled={this.props.codewarsUsername}
                   validate={[required, codewarsUserLink]}
                   descr={'Go to Codewars profile, copy url and paste it here'}
                 />
@@ -95,9 +97,7 @@ class UserRegisterForm extends Component {
             <Button
               type="submit"
               color="primary"
-              disabled={
-                _.has(this.props, 'userRegisterForm.syncErrors')
-              }
+              disabled={_.has(this.props, 'userRegisterForm.syncErrors')}
               value="Register"
             >
               Submit
@@ -119,7 +119,8 @@ class UserRegisterForm extends Component {
 
 const mapStateToProps = state => ({
   userRegisterForm: state.form.userRegister,
-  userInfo: state.user.userInfo
+  userInfo: state.user.userInfo,
+  codewarsUsername: state.codewars.codewarsInfo.username
 });
 
 const mapDispatchToProps = dispatch => ({
