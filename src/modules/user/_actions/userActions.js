@@ -1,17 +1,18 @@
-import { push } from 'react-router-redux';
+// import { push } from 'react-router-redux';
 import { get, post } from '../../utils/httpRequest/httpMethods';
 
-export function userRegister(email, password, codewarsUsername) {
+export function userRegister(email, password, codewarsId) {
   return dispatch =>
     post('/user', {
       email,
       password,
-      codewarsUsername
+      codewarsId
     }).then(res => {
       dispatch({
         type: 'USER_REGISTER',
         payload: res.data
       });
+     //  dispatch(push('/user/login'));
     });
 }
 
@@ -53,7 +54,7 @@ export function userLogin(email, password) {
 
 export function userLogout() {
   return dispatch => {
-    dispatch(push('/'));
+    //dispatch(push('/'));
     dispatch({
       type: 'USER_LOGOUT'
     });

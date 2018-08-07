@@ -1,22 +1,22 @@
 import { applyMiddleware, createStore } from 'redux';
 import { createLogger } from 'redux-logger';
 import thunk from 'redux-thunk';
-import { routerMiddleware } from 'react-router-redux';
-import createHistory from 'history/createBrowserHistory';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import reducer from './reducers';
+import { connectRouter, routerMiddleware } from 'connected-react-router';
+import rootReducer from './reducers';
+import { createBrowserHistory } from 'history';
 
 const logger = createLogger({
-  collapsed: true,
+  collapsed: true
 });
 
 // Build the middleware for intercepting and dispatching navigation actions
-const history = createHistory();
-const reactRouterRedux = routerMiddleware(history);
+const history = createBrowserHistory();
 
 const store = createStore(
-  reducer,
-  composeWithDevTools(applyMiddleware(thunk, logger, reactRouterRedux)),
+  //reducer,
+  connectRouter(history)(rootReducer),
+  composeWithDevTools(applyMiddleware(routerMiddleware(history), thunk, logger))
 );
 
 export default store;

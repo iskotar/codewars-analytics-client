@@ -2,18 +2,13 @@ import React, { Component } from 'react';
 import { Col, Container, Row } from 'reactstrap';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Route, Switch } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import _ from 'lodash';
 import Header from './Header';
 import Footer from './Footer';
-import Home from '../modules/home/home';
 import Warning from '../modules/utils/warning/warning';
 import Alert from '../modules/utils/alert/alert';
-import UserRegisterForm from '../modules/user/register/userRegisterForm';
-import UserLoginForm from '../modules/user/userLoginForm';
-import UserList from '../modules/user/userList';
-import UserProfile from '../modules/user/profile/userProfile';
+import Routes from './Routes';
 
 import CurrentBreakpoint from '../modules/utils/currentBreackpoint/currentBreakpoint';
 import { userGetById } from '../modules/user/_actions/userActions';
@@ -36,7 +31,7 @@ class App extends Component {
       <div>
         <Helmet>
           <meta charSet="utf-8" />
-          <title>CW client</title>
+          <title>CW monitor</title>
         </Helmet>
 
         <Alert />
@@ -46,15 +41,7 @@ class App extends Component {
         <Container fluid>
           <Row>
             <Col>
-              <Switch>
-                <Route exact path="/" component={Home} />
-                <Route exact path="/error" component={Warning} />
-
-                <Route exact path="/user/list" component={UserList} />
-                <Route exact path="/user/login" component={UserLoginForm} />
-                <Route exact path="/user/register" component={UserRegisterForm} />
-                <Route exact path="/user/:userId" component={UserProfile} />
-              </Switch>
+              <Routes />
             </Col>
           </Row>
         </Container>
@@ -67,10 +54,6 @@ class App extends Component {
 
   render() {
     if (this.props.warnings.length) return <Warning />;
-
-    // if (_.isEmpty(this.props.productList) || _.isEmpty(this.props.catalog)) {
-    //   return <span>... Loading</span>
-    // }
 
     return this.component();
   }

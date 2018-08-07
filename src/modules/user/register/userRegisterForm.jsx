@@ -21,9 +21,9 @@ class UserRegisterForm extends Component {
 
     const email = this.props.userRegisterForm.values.email;
     const password = this.props.userRegisterForm.values.password;
-    const codewarsUsername = this.props.codewarsUsername;
+    const codewarsId = this.props.codewarsUsername;
 
-    this.props.userRegister(email, password, codewarsUsername);
+    this.props.userRegister(email, password, codewarsId);
   }
 
   form() {
@@ -38,7 +38,9 @@ class UserRegisterForm extends Component {
               <title>Registration</title>
             </Helmet>
 
-            <p className='text-muted'>https://www.codewars.com/users/Viktor%20Bogutskii</p>
+            <p className="text-muted">
+              https://www.codewars.com/users/Viktor%20Bogutskii
+            </p>
 
             <Field
               name="email"
@@ -57,15 +59,16 @@ class UserRegisterForm extends Component {
             />
 
             <CodewarsCheckerForm />
-
-            <Button
-              type="submit"
-              color="primary"
-              disabled={_.has(this.props, 'userRegisterForm.syncErrors')}
-              value="Register"
-            >
-              Submit
-            </Button>
+            {this.props.codewarsUsername && (
+              <Button
+                type="submit"
+                color="primary"
+                disabled={_.has(this.props, 'userRegisterForm.syncErrors')}
+                value="Register"
+              >
+                Submit
+              </Button>
+            )}
           </Form>
         </Col>
       </Row>
@@ -88,8 +91,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  userRegister: (email, password, codewarsUsername) =>
-    dispatch(userRegister(email, password, codewarsUsername))
+  userRegister: (email, password, codewarsId) =>
+    dispatch(userRegister(email, password, codewarsId))
 });
 
 export default compose(
