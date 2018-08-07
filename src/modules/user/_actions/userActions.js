@@ -63,9 +63,10 @@ export function userLogout() {
 export function checkCodewarsUser(codewarsId) {
   return dispatch =>
     get(`/user/read/cw/${codewarsId}`).then(res => {
-      dispatch({
-        type: 'USER_INFO',
-        payload: res.data
-      });
+      console.log(res);
+      // dispatch({
+      //   type: 'USER_INFO',
+      //   payload: res.data
+      // });
     });
 }

@@ -6,7 +6,12 @@ import { Field, reduxForm } from 'redux-form';
 import _ from 'lodash';
 import { Helmet } from 'react-helmet';
 import { TextField } from '../utils/form/form';
-import { email as validEmail, minLength5, required } from '../utils/form/validators';
+import {
+  email as validEmail,
+  minLength5,
+  required,
+  codewarsUserLink
+} from '../utils/form/validators';
 import { userRegister, checkCodewarsUser } from './_actions/userActions';
 
 class UserRegisterForm extends Component {
@@ -25,9 +30,14 @@ class UserRegisterForm extends Component {
     this.props.userRegister(email, password);
   }
 
-  checkCodewarsUser(id){
-    console.log(id);
-    this.props.checkCodewarsUser('Viktor%20Bogutskii')
+  checkCodewarsUser(e) {
+    e.preventDefault();
+
+    console.log();
+    const codewarsUrl = this.props.userRegisterForm.values.codewarsLink;
+    const codewarsId = codewarsUrl.substring(codewarsUrl.lastIndexOf('/') + 1);
+
+    this.props.checkCodewarsUser(codewarsId);
   }
 
   form() {
@@ -66,12 +76,17 @@ class UserRegisterForm extends Component {
                   name="codewarsLink"
                   component={TextField}
                   type="text"
-                  validate={[required]}
+                  validate={[required, codewarsUserLink]}
                   descr={'Go to Codewars profile, copy url and paste it here'}
                 />
               </Col>
               <Col sm={3}>
-                <Button color="primary" block onClick={this.checkCodewarsUser}>
+                <Button
+                  color="primary"
+                  block
+                  onClick={this.checkCodewarsUser}
+                  disabled={_.has(this.props, 'userRegisterForm.syncErrors.codewarsLink')}
+                >
                   Check
                 </Button>
               </Col>
@@ -81,8 +96,7 @@ class UserRegisterForm extends Component {
               type="submit"
               color="primary"
               disabled={
-                this.props.userRegisterForm &&
-                {}.hasOwnProperty.call(this.props.userRegisterForm, 'syncErrors')
+                _.has(this.props, 'userRegisterForm.syncErrors')
               }
               value="Register"
             >
@@ -109,7 +123,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  checkCodewarsUser: (codewarsId) => dispatch(checkCodewarsUser(codewarsId)),
+  checkCodewarsUser: codewarsId => dispatch(checkCodewarsUser(codewarsId)),
   userRegister: (email, password) => dispatch(userRegister(email, password))
 });
 

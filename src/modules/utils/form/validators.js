@@ -33,3 +33,8 @@ export const phoneNumber = value =>
   value && !/^(0|[1-9][0-9]{9})$/i.test(value)
     ? 'Invalid phone number, must be 10 digits'
     : undefined;
+
+export const codewarsUserLink = value =>
+  value && !/^https:\/\/www.codewars.com\/users\/[\w\d%]*$/i.test(value)
+    ? 'Invalid codewars ures profile link'
+    : undefined;
