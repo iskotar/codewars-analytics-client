@@ -1,5 +1,5 @@
-import { change, initialize } from 'redux-form';
-import { get, post } from '../../utils/httpRequest/httpMethods';
+import { change } from 'redux-form';
+import { get } from '../../utils/httpRequest/httpMethods';
 
 export function checkCodewarsUser(codewarsId) {
   return dispatch =>

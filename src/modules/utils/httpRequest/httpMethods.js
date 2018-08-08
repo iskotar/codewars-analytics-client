@@ -14,11 +14,15 @@ function getHeaders(type) {
   };
 }
 
+const server =
+  process.env.REACT_APP_ENV === 'production'
+    ? process.env.REACT_APP_HOST_API_SERVER_PROD
+    : process.env.REACT_APP_HOST_API_SERVER_DEV;
+
 function httpMethod(method, url, data, type = 'application/json') {
-  console.log(process.env.HOST_API_SERVER);
   return axios({
     method,
-    url: process.env.NODE_ENV === 'production' ? process.env.HOST_API_SERVER : url,
+    url: server + url,
     data,
     headers: getHeaders(type)
   })

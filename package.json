@@ -58,11 +58,11 @@
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "start-js": "react-scripts start",
-    "start": "npm-run-all -p watch-css start-js",
+    "start": "REACT_APP_ENV=production npm-run-all -p watch-css start-js",
+    "dev": "REACT_APP_ENV=development npm-run-all -p watch-css start-js",
     "build": "npm run build-css && react-scripts build",
     "test": "TZ=GMT react-scripts test --env=jsdom",
     "jest": "jest --config ./jest.config.js",
     "eject": "react-scripts eject"
-  },
-  "proxy": "http://localhost:5000"
+  }
 }

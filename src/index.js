@@ -2,12 +2,11 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
-import { createBrowserHistory } from 'history';
 import registerServiceWorker from './registerServiceWorker';
 import store from './redux/store';
 import Index from './layout/Index';
-import './styles/style.css';
 import history from './history';
+import './styles/style.css';
 
 render(
   <Provider store={store}>
