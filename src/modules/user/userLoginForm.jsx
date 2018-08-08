@@ -13,7 +13,6 @@ import { userLogin } from './_actions/userActions';
 class UserLoginForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
     this.formSubmit = this.formSubmit.bind(this);
   }
 
@@ -28,11 +27,12 @@ class UserLoginForm extends Component {
   form() {
     return (
       <Row>
+        <Helmet>
+          <title>Login</title>
+        </Helmet>
+
         <Col sm={6}>
           <Form onSubmit={this.formSubmit}>
-            <Helmet>
-              <title>Login</title>
-            </Helmet>
             <h1>User Login</h1>
             qwe@qwe.qwe
             <Field

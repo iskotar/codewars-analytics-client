@@ -7,8 +7,7 @@ import registerServiceWorker from './registerServiceWorker';
 import store from './redux/store';
 import Index from './layout/Index';
 import './styles/style.css';
-
-const history = createBrowserHistory();
+import history from './history';
 
 render(
   <Provider store={store}>
