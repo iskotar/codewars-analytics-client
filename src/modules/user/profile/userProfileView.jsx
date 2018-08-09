@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-// import { userLogin } from './_actions/userActions';
+import CodewarsCurrentStatus from './../../codewars/codewarsCurrentStatus';
 
 class UserProfileView extends Component {
   render() {
+    const { codewarsAnalytics } = this.props.userInfo;
+
     return (
       <div>
         <Helmet>
@@ -14,6 +16,10 @@ class UserProfileView extends Component {
         {this.props.userInfo._id}
         <hr />
         {this.props.userInfo.email}
+
+        {codewarsAnalytics && (
+          <CodewarsCurrentStatus codewarsAnalytics={codewarsAnalytics} />
+        )}
       </div>
     );
   }
