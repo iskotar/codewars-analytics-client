@@ -35,6 +35,6 @@ export const phoneNumber = value =>
     : undefined;
 
 export const codewarsUserLink = value =>
-  value && !/^https:\/\/www.codewars.com\/users\/[\w\d%]*$/i.test(value)
+  value && !/^https:\/\/www.codewars.com\/users\/[\w\d%-_.]*$/i.test(value)
     ? 'Invalid codewars ures profile link'
     : undefined;
