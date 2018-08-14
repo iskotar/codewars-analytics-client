@@ -23,14 +23,26 @@ const CodewarsChart = ({ codewarsAnalytics }) => {
     >
       <XAxis
         dataKey={'timestamp'}
-        name="Date"
         tickFormatter={timestamp => moment(timestamp).format('DD MMM')}
       />
       <YAxis />
       <CartesianGrid strokeDasharray="3 3" />
       <Tooltip />
       <Legend />
-      <Line type="monotone" dataKey="data.honor" stroke="#8884d8" />
+      <Line
+        type="monotone"
+        dataKey="data.honor"
+        name="Honor"
+        strokeWidth={2}
+        stroke="#8884d8"
+      />
+      <Line
+        type="monotone"
+        dataKey="data.codeChallenges.totalCompleted"
+        name="Tasks"
+        strokeWidth={2}
+        stroke="#82ca9d"
+      />
     </LineChart>
   );
 };
