@@ -46,6 +46,15 @@ function httpMethod(method, url, data, type = 'application/json') {
       return res;
     })
     .catch(error => {
+      if (error.message === 'Network Error') {
+        store.dispatch(
+          Notifications.error({
+            title: error.message,
+            autoDismiss: 0
+          })
+        );
+      }
+
       if (error.response) {
         if (_.has(error.response, 'data.message.text')) {
           store.dispatch(
@@ -71,8 +80,7 @@ function httpMethod(method, url, data, type = 'application/json') {
           console.log('ERROR RESPONSE', error.response);
         }
       }
-
-      return error;
+      throw new Error('ERROR http');
     });
 }
 

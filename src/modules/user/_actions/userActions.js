@@ -53,7 +53,8 @@ export function userLogin(email, password) {
       })
       .then(userId => {
         dispatch(push(`/user/${userId}`));
-      });
+      })
+      .catch(err => err);
 }
 
 export function userLogout() {
