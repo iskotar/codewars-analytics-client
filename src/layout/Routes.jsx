@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import Home from '../modules/home/home';
 import Warning from '../modules/utils/warning/warning';
 import UserRegisterForm from '../modules/user/register/userRegisterForm';
-import UserLoginForm from '../modules/user/userLoginForm';
+import UserLoginForm from '../modules/user/login/userLoginForm';
 import UserList from '../modules/user/userList';
 import UserProfile from '../modules/user/profile/userProfile';
 
