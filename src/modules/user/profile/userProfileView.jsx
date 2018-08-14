@@ -15,7 +15,7 @@ class UserProfileView extends Component {
           <title>Profile</title>
         </Helmet>
 
-        {this.props.userInfo.email}
+        {codewarsAnalytics && <CodewarsChart codewarsAnalytics={codewarsAnalytics} />}
 
         <hr />
 
@@ -25,9 +25,7 @@ class UserProfileView extends Component {
 
         <CodewarsRequestUpdates />
 
-        {codewarsAnalytics && (
-          <CodewarsChart codewarsAnalytics={codewarsAnalytics} />
-        )}
+        {this.props.userInfo.email}
       </div>
     );
   }
