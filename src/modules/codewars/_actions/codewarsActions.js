@@ -1,7 +1,7 @@
 import { change } from 'redux-form';
 import { get } from '../../utils/httpRequest/httpMethods';
 
-export function checkCodewarsUser(codewarsId) {
+export function codewarsCheckUser(codewarsId) {
   return dispatch =>
     get(`/user/read/cw/${codewarsId}`)
       .then(res => {
@@ -18,4 +18,14 @@ export function checkCodewarsUser(codewarsId) {
       .catch(err => {
         dispatch(change('codewarsChecker', 'codewarsLink', ''));
       });
+}
+
+export function codewarsRequestUpdates() {
+  return dispatch =>
+    get(`/user/update/cw/${localStorage.getItem('userId')}`).then(res => {
+      dispatch({
+        type: 'CODEWARS_INFO',
+        payload: res.data
+      });
+    });
 }

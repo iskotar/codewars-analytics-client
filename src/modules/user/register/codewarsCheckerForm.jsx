@@ -6,7 +6,7 @@ import { Field, reduxForm } from 'redux-form';
 import _ from 'lodash';
 import { TextField } from '../../utils/form/form';
 import { required, codewarsUserLink } from '../../utils/form/validators';
-import { checkCodewarsUser } from '../../codewars/_actions/codewarsActions';
+import { codewarsCheckUser } from '../../codewars/_actions/codewarsActions';
 
 class CodewarsCheckerForm extends Component {
   constructor(props) {
@@ -72,7 +72,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  checkCodewarsUser: codewarsId => dispatch(checkCodewarsUser(codewarsId))
+  checkCodewarsUser: codewarsId => dispatch(codewarsCheckUser(codewarsId))
 });
 
 export default compose(
