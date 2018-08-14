@@ -7,33 +7,39 @@ export function userRegister(email, password, codewarsId) {
       email,
       password,
       codewarsId
-    }).then(res => {
-      dispatch({
-        type: 'USER_REGISTER',
-        payload: res.data
-      });
-      dispatch(push('/user/login'));
-    });
+    })
+      .then(res => {
+        dispatch({
+          type: 'USER_REGISTER',
+          payload: res.data
+        });
+        dispatch(push('/user/login'));
+      })
+      .catch(err => err);
 }
 
 export function userGetAll() {
   return dispatch =>
-    get('/user').then(res => {
-      dispatch({
-        type: 'USER_LIST',
-        payload: res.data
-      });
-    });
+    get('/user')
+      .then(res => {
+        dispatch({
+          type: 'USER_LIST',
+          payload: res.data
+        });
+      })
+      .catch(err => err);
 }
 
 export function userGetById(userId) {
   return dispatch =>
-    get(`/user/${userId}`).then(res => {
-      dispatch({
-        type: 'USER_INFO',
-        payload: res.data
-      });
-    });
+    get(`/user/${userId}`)
+      .then(res => {
+        dispatch({
+          type: 'USER_INFO',
+          payload: res.data
+        });
+      })
+      .catch(err => err);
 }
 
 export function userLogin(email, password) {

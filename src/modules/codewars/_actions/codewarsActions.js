@@ -22,10 +22,12 @@ export function codewarsCheckUser(codewarsId) {
 
 export function codewarsRequestUpdates() {
   return dispatch =>
-    get(`/user/update/cw/${localStorage.getItem('userId')}`).then(res => {
-      dispatch({
-        type: 'CODEWARS_INFO',
-        payload: res.data
-      });
-    });
+    get(`/user/update/cw/${localStorage.getItem('userId')}`)
+      .then(res => {
+        dispatch({
+          type: 'CODEWARS_INFO',
+          payload: res.data
+        });
+      })
+      .catch(err => err);
 }
