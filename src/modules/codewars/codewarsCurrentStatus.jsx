@@ -14,7 +14,7 @@ const CodewarsCurrentStatus = ({ codewarsAnalytics }) => {
         <strong>Completed:</strong> {lastRecord.codeChallenges.totalCompleted}
       </li>
       <li>
-        <strong>Skills:</strong> {lastRecord.skills.map(el => el + ' ')}
+        {/*<strong>Skills:</strong> {lastRecord.skills.map(el => el + ' ')}*/}
       </li>
     </ul>
   );

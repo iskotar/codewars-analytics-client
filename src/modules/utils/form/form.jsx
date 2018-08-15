@@ -2,7 +2,7 @@ import React from 'react';
 import { Input } from 'reactstrap';
 import Select from 'react-select';
 
-export const TextField = ({ input, meta, label, placeholder, descr, disabled }) => (
+export const TextField = ({ input, meta, label, placeholder, descr, disabled, type }) => (
   <div>
     {/* <pre>{JSON.stringify(meta, 0, 2)}</pre> */}
 
@@ -28,6 +28,7 @@ export const TextField = ({ input, meta, label, placeholder, descr, disabled }) 
           meta.invalid && meta.touched ? 'is-invalid' : null,
           meta.valid && meta.touched ? 'is-valid' : null
         ].join(' ')}
+        type={type}
       />
 
       {meta.invalid &&
