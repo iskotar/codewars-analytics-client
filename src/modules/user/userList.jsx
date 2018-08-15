@@ -19,13 +19,33 @@ class UserList extends Component {
         accessor: '_id' // String-based value accessors!
       },
       {
-        Header: 'Email',
-        accessor: 'email'
+        Header: 'Name',
+        id: 'name',
+        accessor: el => el.codewarsAnalytics[el.codewarsAnalytics.length - 1].data.name
+      },
+      {
+        Header: 'Rank',
+        id: 'rank',
+        accessor: el =>
+          el.codewarsAnalytics[el.codewarsAnalytics.length - 1].data.ranks.overall.name
+      },
+      {
+        Header: 'Honor',
+        id: 'honor',
+        accessor: el => el.codewarsAnalytics[el.codewarsAnalytics.length - 1].data.honor
+      },
+      {
+        Header: 'Completed',
+        id: 'copmpleted',
+        accessor: el =>
+          el.codewarsAnalytics[el.codewarsAnalytics.length - 1].data.codeChallenges
+            .totalCompleted
       }
     ];
   }
 
   render() {
+    console.log(this.props.userList);
     return (
       <div>
         <ReactTable

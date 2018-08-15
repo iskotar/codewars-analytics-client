@@ -13,7 +13,7 @@ const Routes = () => (
 
     <Route exact path="/error" component={Warning} />
 
-    <Route exact path="/user/list" component={UserList} />
+    <Route exact path="/users" component={UserList} />
     <Route exact path="/user/login" component={UserLoginForm} />
     <Route exact path="/user/register" component={UserRegisterForm} />
     <Route exact path="/user/:userId" component={UserProfile} />
