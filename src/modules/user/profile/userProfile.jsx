@@ -2,11 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import Tabs from '../../utils/tabs/tabs';
-// import UserProfileEdit from './form/userProfileEdit';
 import UserProfileView from './userProfileView';
-// import BillingForm from '../billing/form/billingForm';
+import _ from 'lodash';
+import { userGetById } from '../_actions/userActions';
 
 class UserProfile extends Component {
+  componentDidMount() {
+    if (!_.isEmpty(this.props.match.params.userId)) {
+      this.props.userGetById(this.props.match.params.userId);
+    }
+  }
+
   render() {
     return (
       <div>
@@ -23,17 +29,7 @@ class UserProfile extends Component {
               label: 'View',
               content: <UserProfileView />,
               default: true
-            },
-            // {
-            //   name: 'edit',
-            //   label: 'Edit',
-            //   content: <UserProfileEdit />
-            // },
-            // {
-            //   name: 'billing',
-            //   label: 'Billing',
-            //   content: <BillingForm />
-            // }
+            }
           ]}
         />
       </div>
@@ -46,7 +42,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  // userLogin: (email, password) => dispatch(userLogin(email, password)),
+  userGetById: userId => dispatch(userGetById(userId))
 });
 
 export default connect(
