@@ -1,6 +1,7 @@
 const initialState = {
   userList: [], // User list for admin
-  userInfo: {} // Current user info
+  authUserInfo: {}, // user info
+  currentUserInfo: {} // Current user info
 };
 
 const user = (state = initialState, action) => {
@@ -14,7 +15,7 @@ const user = (state = initialState, action) => {
     case 'USER_INFO':
       return {
         ...state,
-        userInfo: action.payload
+        authUserInfo: action.payload
       };
 
     case 'USER_LOGOUT':

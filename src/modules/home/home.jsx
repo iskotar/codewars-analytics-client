@@ -13,7 +13,7 @@ class Home extends Component {
 }
 
 const mapStateToProps = state => ({
-  userInfo: state.user.userInfo,
+  authUserInfo: state.user.authUserInfo,
 });
 
 const mapDispatchToProps = dispatch => ({

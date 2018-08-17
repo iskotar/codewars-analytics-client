@@ -7,7 +7,7 @@ import CodewarsChart from '../../codewars/codewarsChart';
 
 class UserProfileView extends Component {
   render() {
-    const { codewarsAnalytics } = this.props.userInfo;
+    const { codewarsAnalytics } = this.props.authUserInfo;
 
     return (
       <div>
@@ -25,14 +25,14 @@ class UserProfileView extends Component {
 
         <CodewarsRequestUpdates />
 
-        {this.props.userInfo.email}
+        {this.props.authUserInfo.email}
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  userInfo: state.user.userInfo
+  authUserInfo: state.user.authUserInfo
 });
 
 const mapDispatchToProps = dispatch => ({
