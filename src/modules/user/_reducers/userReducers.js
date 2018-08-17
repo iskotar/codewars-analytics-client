@@ -12,7 +12,7 @@ const user = (state = initialState, action) => {
         userList: action.payload
       };
 
-    case 'USER_INFO':
+    case 'AUTH_USER_INFO':
       return {
         ...state,
         authUserInfo: action.payload

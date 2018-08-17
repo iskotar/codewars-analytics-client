@@ -35,7 +35,7 @@ export function userGetById(userId) {
     get(`/user/${userId}`)
       .then(res => {
         dispatch({
-          type: 'USER_INFO',
+          type: 'AUTH_USER_INFO',
           payload: res.data
         });
       })
