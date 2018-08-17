@@ -1,6 +1,6 @@
 const initialState = {
   userList: [], // User list for admin
-  authUserInfo: {}, // user info
+  authUserInfo: {}, // auth user info
   currentUserInfo: {} // Current user info
 };
 

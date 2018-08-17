@@ -4,10 +4,13 @@ import _ from 'lodash';
 import ReactTable from 'react-table';
 import { Link, withRouter } from 'react-router-dom';
 import { userGetAll } from './_actions/userActions';
+import { push } from 'connected-react-router';
 
 class UserList extends Component {
   componentDidMount() {
-    if (_.isEmpty(this.props.userList)) {
+    if (!_.has(this.props.authUserInfo, '_id')) {
+      this.props.redirectToUserLogin();
+    } else {
       this.props.userGetAll();
     }
   }
@@ -49,7 +52,6 @@ class UserList extends Component {
   }
 
   render() {
-    console.log(this.props.userList);
     return (
       <div>
         <ReactTable
@@ -71,11 +73,13 @@ class UserList extends Component {
 }
 
 const mapStateToProps = state => ({
+  authUserInfo: state.user.authUserInfo,
   userList: state.user.userList
 });
 
 const mapDispatchToProps = dispatch => ({
-  userGetAll: () => dispatch(userGetAll())
+  userGetAll: () => dispatch(userGetAll()),
+  redirectToUserLogin: () => dispatch(push('/user/login'))
 });
 
 export default withRouter(

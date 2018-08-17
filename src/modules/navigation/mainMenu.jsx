@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Nav, NavItem } from 'reactstrap';
-import { NavLink } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
+import _ from 'lodash';
+import { connect } from 'react-redux';
 
 class MainMenu extends Component {
   render() {
@@ -12,20 +14,27 @@ class MainMenu extends Component {
           </NavLink>
         </NavItem>
 
-        <NavItem>
-          <NavLink to="/groups" activeClassName="active" className="nav-link">
-            Groups
-          </NavLink>
-        </NavItem>
+        {_.has(this.props.authUserInfo, '_id') && (
+          <NavItem>
+            <NavLink to="/groups" activeClassName="active" className="nav-link">
+              Groups
+            </NavLink>
+          </NavItem>
+        )}
 
-        <NavItem>
-          <NavLink to="/users" activeClassName="active" className="nav-link">
-            Users
-          </NavLink>
-        </NavItem>
+        {_.has(this.props.authUserInfo, '_id') && (
+          <NavItem>
+            <NavLink to="/users" activeClassName="active" className="nav-link">
+              Users
+            </NavLink>
+          </NavItem>
+        )}
       </Nav>
     );
   }
 }
+const mapStateToProps = state => ({
+  authUserInfo: state.user.authUserInfo
+});
 
-export default MainMenu;
+export default withRouter(connect(mapStateToProps)(MainMenu));

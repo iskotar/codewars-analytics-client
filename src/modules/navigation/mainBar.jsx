@@ -24,7 +24,7 @@ class MainBar extends Component {
     return (
       <Navbar expand="md">
         <NavLink to="/">
-          <span id="site-name">CW Monitor</span>
+          <span id="site-name">Progress Monitor</span>
         </NavLink>
 
         <NavbarToggler onClick={this.toggle} />
