@@ -59,6 +59,7 @@ class UserRegisterForm extends Component {
             />
 
             <CodewarsCheckerForm />
+
             {this.props.codewarsUsername && (
               <Button
                 type="submit"
@@ -80,7 +81,9 @@ class UserRegisterForm extends Component {
   }
 
   render() {
-    return <div>{_.isEmpty(this.props.authUserInfo) ? this.form() : this.insteadForm()}</div>;
+    return (
+      <div>{_.isEmpty(this.props.authUserInfo) ? this.form() : this.insteadForm()}</div>
+    );
   }
 }
 

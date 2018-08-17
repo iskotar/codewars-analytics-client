@@ -54,7 +54,7 @@ class CodewarsCheckerForm extends Component {
                 color="primary"
                 block
                 onClick={this.checkCodewarsUser}
-                disabled={_.has(this.props, 'userRegisterForm.syncErrors.codewarsLink')}
+                disabled={_.has(this.props, 'codewarsCheckerForm.syncErrors')}
               >
                 Check
               </Button>
