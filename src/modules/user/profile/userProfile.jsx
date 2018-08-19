@@ -8,7 +8,8 @@ import { userGetById } from '../_actions/userActions';
 
 class UserProfile extends Component {
   componentDidMount() {
-    if (!_.isEmpty(this.props.match.params.userId)) {
+    const urlUserId = this.props.match.params.userId;
+    if (!_.isEmpty(urlUserId) && this.props.authUserInfo._id !== urlUserId) {
       this.props.userGetById(this.props.match.params.userId);
     }
   }
@@ -22,16 +23,7 @@ class UserProfile extends Component {
 
         <h1>Profile</h1>
 
-        <Tabs
-          tabs={[
-            {
-              name: 'view',
-              label: 'View',
-              content: <UserProfileView />,
-              default: true
-            }
-          ]}
-        />
+        <UserProfileView />
       </div>
     );
   }
