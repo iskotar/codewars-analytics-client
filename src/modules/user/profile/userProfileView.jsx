@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import CodewarsCurrentStatus from './../../codewars/codewarsCurrentStatus';
-import CodewarsRequestUpdates from './../../codewars/codewarsRequestUpdates';
 import CodewarsChart from '../../codewars/codewarsChart';
 
 class UserProfileView extends Component {
@@ -22,10 +21,6 @@ class UserProfileView extends Component {
         {codewarsAnalytics && (
           <CodewarsCurrentStatus codewarsAnalytics={codewarsAnalytics} />
         )}
-
-        <CodewarsRequestUpdates />
-
-        {this.props.authUserInfo.email}
       </div>
     );
   }

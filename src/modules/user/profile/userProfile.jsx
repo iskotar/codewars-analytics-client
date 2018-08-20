@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import Tabs from '../../utils/tabs/tabs';
 import UserProfileView from './userProfileView';
 import _ from 'lodash';
 import { userGetById } from '../_actions/userActions';

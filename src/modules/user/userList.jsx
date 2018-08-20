@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 import ReactTable from 'react-table';
 import { Link, withRouter } from 'react-router-dom';
+import moment from 'moment';
 import { userGetAll } from './_actions/userActions';
 import { push } from 'connected-react-router';
 
@@ -47,6 +48,11 @@ class UserList extends Component {
         Header: 'Completed',
         id: 'copmpleted',
         accessor: el => this.getLastCodewarsRecord(el).data.codeChallenges.totalCompleted
+      },
+      {
+        Header: 'Updated',
+        id: 'updated',
+        accessor: el => moment(this.getLastCodewarsRecord(el).timestamp).startOf('hour').fromNow()
       }
     ];
   }
