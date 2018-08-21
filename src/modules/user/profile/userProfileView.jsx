@@ -6,7 +6,7 @@ import CodewarsChart from '../../codewars/codewarsChart';
 
 class UserProfileView extends Component {
   render() {
-    const { codewarsAnalytics } = this.props.authUserInfo;
+    const { codewarsAnalytics } = this.props.userAuthorizedInfo;
 
     return (
       <div>
@@ -27,7 +27,7 @@ class UserProfileView extends Component {
 }
 
 const mapStateToProps = state => ({
-  authUserInfo: state.user.authUserInfo
+  userAuthorizedInfo: state.user.userAuthorizedInfo
 });
 
 const mapDispatchToProps = dispatch => ({

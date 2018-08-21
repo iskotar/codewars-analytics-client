@@ -9,7 +9,7 @@ import { push } from 'connected-react-router';
 
 class UserList extends Component {
   componentDidMount() {
-    if (!_.has(this.props.authUserInfo, '_id')) {
+    if (!_.has(this.props.userAuthorizedInfo, '_id')) {
       this.props.redirectToUserLogin();
     } else {
       this.props.userGetAll();
@@ -79,7 +79,7 @@ class UserList extends Component {
 }
 
 const mapStateToProps = state => ({
-  authUserInfo: state.user.authUserInfo,
+  userAuthorizedInfo: state.user.userAuthorizedInfo,
   userList: state.user.userList
 });
 

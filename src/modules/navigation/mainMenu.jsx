@@ -14,7 +14,7 @@ class MainMenu extends Component {
           </NavLink>
         </NavItem>
 
-        {_.has(this.props.authUserInfo, '_id') && (
+        {_.has(this.props.userAuthorizedInfo, '_id') && (
           <NavItem>
             <NavLink to="/groups" activeClassName="active" className="nav-link">
               Groups
@@ -22,7 +22,7 @@ class MainMenu extends Component {
           </NavItem>
         )}
 
-        {_.has(this.props.authUserInfo, '_id') && (
+        {_.has(this.props.userAuthorizedInfo, '_id') && (
           <NavItem>
             <NavLink to="/users" activeClassName="active" className="nav-link">
               Users
@@ -34,7 +34,7 @@ class MainMenu extends Component {
   }
 }
 const mapStateToProps = state => ({
-  authUserInfo: state.user.authUserInfo
+  userAuthorizedInfo: state.user.userAuthorizedInfo
 });
 
 export default withRouter(connect(mapStateToProps)(MainMenu));

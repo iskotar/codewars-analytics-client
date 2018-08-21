@@ -20,11 +20,11 @@ class UserSection extends Component {
         <Nav className="ml-auto" navbar>
           <UncontrolledDropdown nav>
             <DropdownToggle nav caret>
-              {this.props.authUserInfo.email}
+              {this.props.userAuthorizedInfo.email}
             </DropdownToggle>
 
             <DropdownMenu>
-              <Link to={`/user/${this.props.authUserInfo._id}`} className="dropdown-item">
+              <Link to={`/user/${this.props.userAuthorizedInfo._id}`} className="dropdown-item">
                 Profile
               </Link>
 
@@ -57,12 +57,12 @@ class UserSection extends Component {
   }
 
   render() {
-    return _.isEmpty(this.props.authUserInfo) ? this.unauthMenu() : this.userShortInfo();
+    return _.isEmpty(this.props.userAuthorizedInfo) ? this.unauthMenu() : this.userShortInfo();
   }
 }
 
 const mapStateToProps = state => ({
-  authUserInfo: state.user.authUserInfo
+  userAuthorizedInfo: state.user.userAuthorizedInfo
 });
 
 const mapDispatchToProps = dispatch => ({

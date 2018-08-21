@@ -17,7 +17,7 @@ class UserProfileEdit extends Component {
 }
 
 const mapStateToProps = state => ({
-  authUserInfo: state.user.authUserInfo
+  userAuthorizedInfo: state.user.userAuthorizedInfo
 });
 
 const mapDispatchToProps = dispatch => ({

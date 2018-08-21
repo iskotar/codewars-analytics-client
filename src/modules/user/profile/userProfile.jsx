@@ -8,7 +8,7 @@ import { userGetById } from '../_actions/userActions';
 class UserProfile extends Component {
   componentDidMount() {
     const urlUserId = this.props.match.params.userId;
-    if (!_.isEmpty(urlUserId) && this.props.authUserInfo._id !== urlUserId) {
+    if (!_.isEmpty(urlUserId) && this.props.userAuthorizedInfo._id !== urlUserId) {
       this.props.userGetById(this.props.match.params.userId);
     }
   }
@@ -29,7 +29,7 @@ class UserProfile extends Component {
 }
 
 const mapStateToProps = state => ({
-  authUserInfo: state.user.authUserInfo
+  userAuthorizedInfo: state.user.userAuthorizedInfo
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -22,7 +22,7 @@ class App extends Component {
   componentDidMount() {
     // After refresh login for current user
     if (
-      _.isEmpty(this.props.authUserInfo) &&
+      _.isEmpty(this.props.userAuthorizedInfo) &&
       !_.isEmpty(localStorage.getItem('userId'))
     ) {
       this.props.userGetById(localStorage.getItem('userId'));
@@ -63,7 +63,7 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  authUserInfo: state.user.authUserInfo,
+  userAuthorizedInfo: state.user.userAuthorizedInfo,
   warnings: state.warning.warnings
 });
 

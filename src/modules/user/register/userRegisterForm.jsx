@@ -82,14 +82,14 @@ class UserRegisterForm extends Component {
 
   render() {
     return (
-      <div>{_.isEmpty(this.props.authUserInfo) ? this.form() : this.insteadForm()}</div>
+      <div>{_.isEmpty(this.props.userAuthorizedInfo) ? this.form() : this.insteadForm()}</div>
     );
   }
 }
 
 const mapStateToProps = state => ({
   userRegisterForm: state.form.userRegister,
-  authUserInfo: state.user.authUserInfo,
+  userAuthorizedInfo: state.user.userAuthorizedInfo,
   codewarsUsername: state.codewars.codewarsInfo.username
 });
 

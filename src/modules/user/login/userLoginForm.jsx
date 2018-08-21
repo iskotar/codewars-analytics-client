@@ -68,14 +68,14 @@ class UserLoginForm extends Component {
 
   render() {
     return (
-      <div>{_.isEmpty(this.props.authUserInfo) ? this.form() : <Redirect to="/" />}</div>
+      <div>{_.isEmpty(this.props.userAuthorizedInfo) ? this.form() : <Redirect to="/" />}</div>
     );
   }
 }
 
 const mapStateToProps = state => ({
   userLoginForm: state.form.userLogin,
-  authUserInfo: state.user.authUserInfo
+  userAuthorizedInfo: state.user.userAuthorizedInfo
 });
 
 const mapDispatchToProps = dispatch => ({
