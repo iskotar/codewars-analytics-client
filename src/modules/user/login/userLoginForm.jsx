@@ -34,7 +34,7 @@ class UserLoginForm extends Component {
         <Col sm={6}>
           <Form onSubmit={this.formSubmit}>
             <h1>User Login</h1>
-            qwe2@qwe.qwe
+
             <Field
               name="email"
               type="text"
