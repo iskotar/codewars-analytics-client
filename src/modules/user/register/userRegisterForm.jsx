@@ -38,10 +38,6 @@ class UserRegisterForm extends Component {
               <title>Registration</title>
             </Helmet>
 
-            <p className="text-muted">
-              https://www.codewars.com/users/Viktor%20Bogutskii
-            </p>
-
             <Field
               name="email"
               type="text"
