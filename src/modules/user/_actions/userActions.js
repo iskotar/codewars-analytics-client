@@ -30,7 +30,19 @@ export function userGetAll() {
       .catch(err => err);
 }
 
-export function userGetById(userId) {
+export function userGetCurrent(userId) {
+  return dispatch =>
+    get(`/user/${userId}`)
+      .then(res => {
+        dispatch({
+          type: 'USER_CURRENT_INFO',
+          payload: res.data
+        });
+      })
+      .catch(err => err);
+}
+
+export function userGetAuthUserInfo(userId) {
   return dispatch =>
     get(`/user/${userId}`)
       .then(res => {
@@ -54,7 +66,7 @@ export function userLogin(email, password) {
         return res;
       })
       .then(res => {
-        dispatch(userGetById(res.data.userId));
+        dispatch(userGetCurrent(res.data.userId));
         return res.data.userId;
       })
       .then(userId => {

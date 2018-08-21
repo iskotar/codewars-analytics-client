@@ -1,7 +1,7 @@
 const initialState = {
   userList: [], // User list for admin
   userAuthorizedInfo: {}, // auth user info
-  currentUserInfo: {} // Current user info
+  userCurrentInfo: {} // Current user info
 };
 
 const user = (state = initialState, action) => {

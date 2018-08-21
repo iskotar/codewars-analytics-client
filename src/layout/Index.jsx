@@ -11,7 +11,7 @@ import Alert from '../modules/utils/alert/alert';
 import Routes from './Routes';
 
 import CurrentBreakpoint from '../modules/utils/currentBreackpoint/currentBreakpoint';
-import { userGetById } from '../modules/user/_actions/userActions';
+import { userGetAuthUserInfo } from '../modules/user/_actions/userActions';
 
 class App extends Component {
   constructor(props) {
@@ -25,7 +25,7 @@ class App extends Component {
       _.isEmpty(this.props.userAuthorizedInfo) &&
       !_.isEmpty(localStorage.getItem('userId'))
     ) {
-      this.props.userGetById(localStorage.getItem('userId'));
+      this.props.userGetAuthUserInfo(localStorage.getItem('userId'));
     }
   }
 
@@ -34,7 +34,7 @@ class App extends Component {
       <div>
         <Helmet>
           <meta charSet="utf-8" />
-          <title>CW monitor</title>
+          <title>Progress Monitor</title>
         </Helmet>
 
         <Alert />
@@ -68,7 +68,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  userGetById: userId => dispatch(userGetById(userId))
+  userGetAuthUserInfo: userId => dispatch(userGetAuthUserInfo(userId))
 });
 
 export default withRouter(
