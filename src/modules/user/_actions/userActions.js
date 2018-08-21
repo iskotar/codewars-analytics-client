@@ -66,7 +66,7 @@ export function userLogin(email, password) {
         return res;
       })
       .then(res => {
-        dispatch(userGetCurrent(res.data.userId));
+        dispatch(userGetAuthUserInfo(res.data.userId));
         return res.data.userId;
       })
       .then(userId => {
