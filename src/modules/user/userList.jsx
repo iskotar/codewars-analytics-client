@@ -52,7 +52,12 @@ class UserList extends Component {
       {
         Header: 'Updated',
         id: 'updated',
-        accessor: el => moment(this.getLastCodewarsRecord(el).timestamp).startOf('hour').fromNow()
+        accessor: el => moment(this.getLastCodewarsRecord(el).timestamp).format('lll')
+      },
+      {
+        Header: 'Count',
+        id: 'records',
+        accessor: el => el.codewarsAnalytics.length
       }
     ];
   }
