@@ -41,12 +41,12 @@ class UserList extends Component {
         accessor: el => this.getLastCodewarsRecord(el).data.ranks.overall.name
       },
       {
-        Header: 'Honor',
+        Header: 'Honor total',
         id: 'honor',
         accessor: el => this.getLastCodewarsRecord(el).data.honor
       },
       {
-        Header: 'Completed',
+        Header: 'Completed total',
         id: 'copmpleted',
         accessor: el => this.getLastCodewarsRecord(el).data.codeChallenges.totalCompleted
       },
@@ -54,18 +54,31 @@ class UserList extends Component {
         Header: 'Created',
         id: 'created',
         accessor: el =>
-          moment(el.codewarsAnalytics[0].timestamp).format('DD-MMM-YY HH:mm')
+          moment(el.codewarsAnalytics[0].timestamp).format('DD-MMM HH:mm')
       },
       {
         Header: 'Updated',
         id: 'updated',
         accessor: el =>
-          moment(this.getLastCodewarsRecord(el).timestamp).format('DD-MMM-YY HH:mm')
+          moment(this.getLastCodewarsRecord(el).timestamp).format('DD-MMM HH:mm')
+      },
+      // {
+      //   Header: 'Count',
+      //   id: 'records',
+      //   accessor: el => el.codewarsAnalytics.length
+      // },
+      {
+        Header: 'Earned honor',
+        id: 'earned_honor',
+        accessor: el =>
+          this.getLastCodewarsRecord(el).data.honor - el.codewarsAnalytics[0].data.honor
       },
       {
-        Header: 'Count',
-        id: 'records',
-        accessor: el => el.codewarsAnalytics.length
+        Header: 'Completed from 20Aug',
+        id: 'completed_from',
+        accessor: el =>
+          this.getLastCodewarsRecord(el).data.codeChallenges.totalCompleted -
+          el.codewarsAnalytics[0].data.codeChallenges.totalCompleted
       },
       {
         Header: 'Pulse',
@@ -82,11 +95,12 @@ class UserList extends Component {
           className="light border"
           data={this.props.userList}
           columns={this.columns()}
-          minRows={0}
-          showPagination={false}
+          minRows={this.props.userList.length > 100 ? 100 : this.props.userList.length}
+          showPagination={this.props.userList.length > 100}
+          defaultPageSize={100}
           defaultSorted={[
             {
-              id: 'honor',
+              id: 'earned_honor',
               desc: true
             }
           ]}
