@@ -4,8 +4,9 @@ import _ from 'lodash';
 import ReactTable from 'react-table';
 import { Link, withRouter } from 'react-router-dom';
 import moment from 'moment';
-import { userGetAll } from './_actions/userActions';
+import { userGetAll } from '../_actions/userActions';
 import { push } from 'connected-react-router';
+import CodewarsChartPulse from '../../codewars/codewarsChartPulse';
 
 class UserList extends Component {
   componentDidMount() {
@@ -50,14 +51,26 @@ class UserList extends Component {
         accessor: el => this.getLastCodewarsRecord(el).data.codeChallenges.totalCompleted
       },
       {
+        Header: 'Created',
+        id: 'created',
+        accessor: el =>
+          moment(el.codewarsAnalytics[0].timestamp).format('DD-MMM-YY HH:mm')
+      },
+      {
         Header: 'Updated',
         id: 'updated',
-        accessor: el => moment(this.getLastCodewarsRecord(el).timestamp).format('lll')
+        accessor: el =>
+          moment(this.getLastCodewarsRecord(el).timestamp).format('DD-MMM-YY HH:mm')
       },
       {
         Header: 'Count',
         id: 'records',
         accessor: el => el.codewarsAnalytics.length
+      },
+      {
+        Header: 'Pulse',
+        id: 'pulse',
+        accessor: el => <CodewarsChartPulse codewarsAnalytics={el.codewarsAnalytics} />
       }
     ];
   }

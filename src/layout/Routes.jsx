@@ -4,7 +4,7 @@ import Home from '../modules/pages/home/home';
 import Warning from '../modules/utils/warning/warning';
 import UserRegisterForm from '../modules/user/register/userRegisterForm';
 import UserLoginForm from '../modules/user/login/userLoginForm';
-import UserList from '../modules/user/userList';
+import UserList from '../modules/user/list/userList';
 import UserProfile from '../modules/user/profile/userProfile';
 import About from '../modules/pages/about';
 

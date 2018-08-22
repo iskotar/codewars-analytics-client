@@ -25,7 +25,7 @@ const CodewarsChart = ({ codewarsAnalytics }) => {
         />
         <YAxis />
         <CartesianGrid strokeDasharray="3 3" />
-        <Tooltip />
+        <Tooltip label={'qwe'}/>
         <Legend />
         <Line
           type="monotone"
@@ -37,7 +37,7 @@ const CodewarsChart = ({ codewarsAnalytics }) => {
         <Line
           type="monotone"
           dataKey="data.codeChallenges.totalCompleted"
-          name="Tasks"
+          name="Completed Tasks"
           strokeWidth={2}
           stroke="#82ca9d"
         />
