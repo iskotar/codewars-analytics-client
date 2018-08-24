@@ -81,7 +81,7 @@ class UserList extends Component {
           el.codewarsAnalytics[0].data.codeChallenges.totalCompleted
       },
       {
-        Header: 'Pulse',
+        Header: 'Pulse (7 days)',
         id: 'pulse',
         accessor: el => <CodewarsChartPulse codewarsAnalytics={el.codewarsAnalytics} />
       }
