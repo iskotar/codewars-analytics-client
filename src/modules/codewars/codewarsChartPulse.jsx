@@ -1,15 +1,15 @@
 import React from 'react';
 import { LineChart, Line, ResponsiveContainer } from 'recharts';
 
-const lastSeven = codewarsAnalytics => codewarsAnalytics.slice(-7);
-
 const CodewarsChartPulse = ({ codewarsAnalytics }) => {
+  const lastSeven = codewarsAnalytics.slice(-7);
+
   return (
     <ResponsiveContainer width="100%" aspect={5.0 / 1.0}>
-      <LineChart data={lastSeven(codewarsAnalytics)}>
+      <LineChart data={lastSeven}>
         <Line
           type="monotone"
-          dataKey={v => v.data.honor - lastSeven(codewarsAnalytics)[0].data.honor}
+          dataKey={v => v.data.honor - lastSeven[0].data.honor}
           name="Honor"
           dot={false}
           strokeWidth={2}
