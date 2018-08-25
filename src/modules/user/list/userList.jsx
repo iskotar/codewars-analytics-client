@@ -7,6 +7,12 @@ import moment from 'moment';
 import { userGetAll } from '../_actions/userActions';
 import { push } from 'connected-react-router';
 import CodewarsChartPulse from '../../codewars/codewarsChartPulse';
+import CodewarsChartTrendIcons from '../../codewars/codewarsChartTrendIcons';
+
+const trend = codewarsAnalytics => {
+  const lastTwo = codewarsAnalytics.slice(-2);
+  return lastTwo[1].data.honor - lastTwo[0].data.honor;
+};
 
 class UserList extends Component {
   componentDidMount() {
@@ -46,26 +52,14 @@ class UserList extends Component {
         accessor: el => this.getLastCodewarsRecord(el).data.honor
       },
       {
-        Header: 'Completed total',
+        Header: 'Tasks total',
         id: 'copmpleted',
         accessor: el => this.getLastCodewarsRecord(el).data.codeChallenges.totalCompleted
       },
-      {
-        Header: 'Created',
-        id: 'created',
-        accessor: el =>
-          moment(el.codewarsAnalytics[0].timestamp).format('DD-MMM HH:mm')
-      },
-      {
-        Header: 'Updated',
-        id: 'updated',
-        accessor: el =>
-          moment(this.getLastCodewarsRecord(el).timestamp).format('DD-MMM HH:mm')
-      },
       // {
-      //   Header: 'Count',
-      //   id: 'records',
-      //   accessor: el => el.codewarsAnalytics.length
+      //   Header: 'Created',
+      //   id: 'created',
+      //   accessor: el => moment(el.codewarsAnalytics[0].timestamp).format('DD-MMM HH:mm')
       // },
       {
         Header: 'Earned honor',
@@ -74,17 +68,35 @@ class UserList extends Component {
           this.getLastCodewarsRecord(el).data.honor - el.codewarsAnalytics[0].data.honor
       },
       {
-        Header: 'Completed from 20Aug',
+        Header: 'Tasks > 20Aug',
         id: 'completed_from',
         accessor: el =>
           this.getLastCodewarsRecord(el).data.codeChallenges.totalCompleted -
           el.codewarsAnalytics[0].data.codeChallenges.totalCompleted
       },
       {
+        Header: 'Trend (2 days)',
+        id: 'trend',
+        accessor: el => trend(el.codewarsAnalytics)
+      },
+      {
+        Header: 'Icon',
+        id: 'icon',
+        accessor: el => (
+          <CodewarsChartTrendIcons codewarsAnalytics={el.codewarsAnalytics} />
+        )
+      },
+      {
         Header: 'Pulse (7 days)',
         id: 'pulse',
         accessor: el => <CodewarsChartPulse codewarsAnalytics={el.codewarsAnalytics} />
-      }
+      },
+      // {
+      //   Header: 'Updated',
+      //   id: 'updated',
+      //   accessor: el =>
+      //     moment(this.getLastCodewarsRecord(el).timestamp).format('DD-MMM HH:mm')
+      // },
     ];
   }
 
