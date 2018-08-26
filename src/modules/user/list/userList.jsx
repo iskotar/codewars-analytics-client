@@ -62,7 +62,7 @@ class UserList extends Component {
       //   accessor: el => moment(el.codewarsAnalytics[0].timestamp).format('DD-MMM HH:mm')
       // },
       {
-        Header: 'Earned honor',
+        Header: 'Honor > 20Aug',
         id: 'earned_honor',
         accessor: el =>
           this.getLastCodewarsRecord(el).data.honor - el.codewarsAnalytics[0].data.honor
