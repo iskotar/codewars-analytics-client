@@ -33,7 +33,8 @@ function httpMethod(method, url, data, type = 'application/json') {
         store.dispatch(
           Notifications.success({
             title: res.data.message.text,
-            autoDismiss: 0
+            autoDismiss: 0,
+            position: 'br',
           })
         );
       }
@@ -50,7 +51,8 @@ function httpMethod(method, url, data, type = 'application/json') {
         store.dispatch(
           Notifications.error({
             title: error.message,
-            autoDismiss: 0
+            autoDismiss: 0,
+            position: 'br',
           })
         );
       }
@@ -60,7 +62,8 @@ function httpMethod(method, url, data, type = 'application/json') {
           store.dispatch(
             Notifications.error({
               title: error.response.data.message.text,
-              autoDismiss: 0
+              autoDismiss: 0,
+              position: 'br',
             })
           );
 
@@ -70,7 +73,8 @@ function httpMethod(method, url, data, type = 'application/json') {
           store.dispatch(
             Notifications.error({
               title: error.response.data.error.message,
-              autoDismiss: 0
+              autoDismiss: 0,
+              position: 'br',
             })
           );
           // Add warning 500

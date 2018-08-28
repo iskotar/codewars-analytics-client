@@ -20,7 +20,7 @@ class UserSection extends Component {
         <Nav className="ml-auto" navbar>
           <UncontrolledDropdown nav>
             <DropdownToggle nav caret>
-              {this.props.userAuthorizedInfo.email}
+              {this.props.userAuthorizedInfo.codewarsId}
             </DropdownToggle>
 
             <DropdownMenu>
