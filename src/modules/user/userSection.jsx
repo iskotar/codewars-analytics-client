@@ -18,18 +18,20 @@ class UserSection extends Component {
     return (
       <Collapse isOpen={this.props.isOpen} navbar>
         <Nav className="ml-auto" navbar>
-          <UncontrolledDropdown nav>
+          <UncontrolledDropdown nav inNavbar>
             <DropdownToggle nav caret>
               {this.props.userAuthorizedInfo.codewarsId}
             </DropdownToggle>
 
             <DropdownMenu>
-              <Link to={`/user/${this.props.userAuthorizedInfo._id}`} className="dropdown-item">
-                Profile
+              <Link to={`/user/${this.props.userAuthorizedInfo._id}`}>
+                <DropdownItem>Profile</DropdownItem>
               </Link>
 
+              <Link to={`/user/edit/${this.props.userAuthorizedInfo._id}`}>
+                <DropdownItem>Settings</DropdownItem>
+              </Link>
               <DropdownItem divider />
-
               <DropdownItem onClick={() => this.props.userLogout()}>Logout</DropdownItem>
             </DropdownMenu>
           </UncontrolledDropdown>
@@ -57,7 +59,9 @@ class UserSection extends Component {
   }
 
   render() {
-    return _.isEmpty(this.props.userAuthorizedInfo) ? this.unauthMenu() : this.userShortInfo();
+    return _.isEmpty(this.props.userAuthorizedInfo)
+      ? this.unauthMenu()
+      : this.userShortInfo();
   }
 }
 

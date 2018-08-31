@@ -22,7 +22,7 @@ class MainBar extends Component {
 
   render() {
     return (
-      <Navbar expand="md">
+      <Navbar expand="md" light>
         <NavLink to="/">
           <span id="site-name">Progress Monitor</span>
         </NavLink>

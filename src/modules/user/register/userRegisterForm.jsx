@@ -32,7 +32,7 @@ class UserRegisterForm extends Component {
         <Col sm={12}>
           <h1>User Register</h1>
         </Col>
-        <Col sm={6}>
+        <Col sm={12} md={10} lg={6}>
           <Form onSubmit={this.formSubmit}>
             <Helmet>
               <title>Registration</title>
