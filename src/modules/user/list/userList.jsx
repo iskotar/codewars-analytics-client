@@ -112,7 +112,7 @@ class UserList extends Component {
           defaultPageSize={100}
           defaultSorted={[
             {
-              id: 'earned_honor',
+              id: 'trend',
               desc: true
             }
           ]}
