@@ -21,6 +21,11 @@
       border-color: lighten($color1, 40%);
     }
   }
+
+  .dropdown-menu.show a {
+    text-decoration: none;
+    cursor: pointer;
+  }
 }
 
 #site-name {

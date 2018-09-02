@@ -4,6 +4,7 @@ import Notifications from 'react-notification-system-redux';
 import store from '../../../redux/store';
 
 import { warningAdd, warningRemove } from '../warning/_actions/warningActions';
+import { push } from 'connected-react-router';
 
 function getHeaders(type) {
   return {
@@ -34,7 +35,7 @@ function httpMethod(method, url, data, type = 'application/json') {
           Notifications.success({
             title: res.data.message.text,
             autoDismiss: 0,
-            position: 'br',
+            position: 'br'
           })
         );
       }
@@ -52,7 +53,7 @@ function httpMethod(method, url, data, type = 'application/json') {
           Notifications.error({
             title: error.message,
             autoDismiss: 0,
-            position: 'br',
+            position: 'br'
           })
         );
       }
@@ -63,21 +64,15 @@ function httpMethod(method, url, data, type = 'application/json') {
             Notifications.error({
               title: error.response.data.message.text,
               autoDismiss: 0,
-              position: 'br',
+              position: 'br'
             })
           );
 
           // Fix failed autologin
-          if (error.response.data.message.text === 'Auth failed') localStorage.clear();
-        } else if (_.has(error.response, 'data.error.message')) {
-          store.dispatch(
-            Notifications.error({
-              title: error.response.data.error.message,
-              autoDismiss: 0,
-              position: 'br',
-            })
-          );
-          // Add warning 500
+          if (error.response.data.message.text === 'Auth failed') {
+            store.dispatch(push(`/user/login`));
+            localStorage.clear();
+          }
         } else if (error.response.status === 500) {
           store.dispatch(warningAdd('500'));
         } else {
