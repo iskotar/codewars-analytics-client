@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import _ from 'lodash';
 import ReactTable from 'react-table';
 import { Link, withRouter } from 'react-router-dom';
-import moment from 'moment';
 import { userGetAll } from '../_actions/userActions';
-import { push } from 'connected-react-router';
 import CodewarsChartPulse from '../../codewars/codewarsChartPulse';
 import CodewarsChartTrendIcons from '../../codewars/codewarsChartTrendIcons';
 
@@ -16,11 +13,7 @@ const trend = codewarsAnalytics => {
 
 class UserList extends Component {
   componentDidMount() {
-    if (!_.has(this.props.userAuthorizedInfo, '_id')) {
-      this.props.redirectToUserLogin();
-    } else {
-      this.props.userGetAll();
-    }
+    this.props.userGetAll();
   }
 
   getLastCodewarsRecord(el) {
@@ -90,7 +83,7 @@ class UserList extends Component {
         Header: 'Pulse (7 days)',
         id: 'pulse',
         accessor: el => <CodewarsChartPulse codewarsAnalytics={el.codewarsAnalytics} />
-      },
+      }
       // {
       //   Header: 'Updated',
       //   id: 'updated',
@@ -129,7 +122,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   userGetAll: () => dispatch(userGetAll()),
-  redirectToUserLogin: () => dispatch(push('/user/login'))
 });
 
 export default withRouter(
