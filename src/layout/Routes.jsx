@@ -2,6 +2,9 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Home from '../modules/pages/home/home';
 import Warning from '../modules/utils/warning/warning';
+
+import GroupList from '../modules/group/list/groupList';
+
 import UserRegisterForm from '../modules/user/register/userRegisterForm';
 import UserLoginForm from '../modules/user/login/userLoginForm';
 import UserList from '../modules/user/list/userList';
@@ -14,6 +17,8 @@ const Routes = () => (
     <Route exact path="/" component={Home} />
 
     <Route exact path="/error" component={Warning} />
+
+    <Route exact path="/groups" component={GroupList} />
 
     <Route exact path="/users" component={UserList} />
     <Route exact path="/user/login" component={UserLoginForm} />
