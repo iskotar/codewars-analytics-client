@@ -6,33 +6,39 @@ import { groupGetById, removeUserFromGroup } from './../_actions/groupActions';
 import { ListGroup, ListGroupItem } from 'reactstrap';
 
 class GroupFormUserList extends Component {
+  userList = () => {
+    const members = this.props.groupCurrentInfo.members;
+    const all = this.props.userListLightweight;
+    return all.filter(el => members.includes(el._id)) || [];
+  };
+
   render() {
     return (
       <div>
-        {_.get(this.props, 'groupCurrentInfo.members') && (
-          <ListGroup>
-            {this.props.groupCurrentInfo.members.map(el => (
-              <ListGroupItem key={el}>
-                {el}
-                <Button
-                  color="danger"
-                  size="sm"
-                  className="float-right"
-                  onClick={() => this.props.removeUserFromGroup(el)}
-                >
-                  Remove
-                </Button>
-              </ListGroupItem>
-            ))}
-          </ListGroup>
-        )}
+        <ListGroup>
+          {this.userList().map(el => (
+            <ListGroupItem key={el._id}>
+              {el.codewarsId}
+              {el.name}
+              <Button
+                color="danger"
+                size="sm"
+                className="float-right"
+                onClick={() => this.props.removeUserFromGroup(el._id)}
+              >
+                Remove
+              </Button>
+            </ListGroupItem>
+          ))}
+        </ListGroup>
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  groupCurrentInfo: state.group.groupCurrentInfo
+  groupCurrentInfo: state.group.groupCurrentInfo,
+  userListLightweight: state.user.userListLightweight
 });
 
 const mapDispatchToProps = dispatch => ({

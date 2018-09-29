@@ -1,5 +1,6 @@
 const initialState = {
   userList: [], // User list for admin
+  userListLightweight: [], // for group edit
   userAuthorizedInfo: {}, // auth user info
   userCurrentInfo: {} // Current user info
 };
@@ -10,6 +11,12 @@ const user = (state = initialState, action) => {
       return {
         ...state,
         userList: action.payload
+      };
+
+    case 'USER_LIST_LIGHTWEIGHT':
+      return {
+        ...state,
+        userListLightweight: action.payload
       };
 
     case 'USER_AUTHORIZED_INFO':

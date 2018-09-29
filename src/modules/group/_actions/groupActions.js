@@ -34,6 +34,14 @@ export function removeUserFromGroup(userId) {
       payload: userId
     });
 }
+
+export function addUserToGroup(userId) {
+  return dispatch =>
+    dispatch({
+      type: 'GROUP_USER_ADD_BY_ID',
+      payload: userId
+    });
+}
 /*
 
 export function userRegister(email, password, codewarsId) {

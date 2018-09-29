@@ -1,45 +1,43 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import { groupGetById, removeUserFromGroup } from './../_actions/groupActions';
-import Select from 'react-select';
-
-const options = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' }
-];
+import { groupGetById, addUserToGroup } from './../_actions/groupActions';
+import { ListGroup, ListGroupItem, Button } from 'reactstrap';
 
 class GroupFormUserSelect extends Component {
-  state = {
-    selectedOption: null
-  };
-
-  handleChange = selectedOption => {
-    this.setState({ selectedOption });
-    console.log(`Option selected:`, selectedOption);
-  };
-
   render() {
     return (
       <div className="form-group">
-        <Select
-          value={this.state.selectedOption}
-          onChange={this.handleChange}
-          options={options}
-        />
+        {_.get(this.props, 'userListLightweight') && (
+          <ListGroup>
+            {this.props.userListLightweight.map(el => (
+              <ListGroupItem key={el._id}>
+                {el.codewarsId}
+                <Button
+                  color="primary"
+                  size="sm"
+                  className="float-right"
+                  onClick={() => this.props.addUserToGroup(el._id)}
+                >
+                  Add
+                </Button>
+              </ListGroupItem>
+            ))}
+          </ListGroup>
+        )}
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  groupCurrentInfo: state.group.groupCurrentInfo
+  groupCurrentInfo: state.group.groupCurrentInfo,
+  userListLightweight: state.user.userListLightweight
 });
 
 const mapDispatchToProps = dispatch => ({
   groupGetById: groupId => dispatch(groupGetById(groupId)),
-  removeUserFromGroup: userId => dispatch(removeUserFromGroup(userId))
+  addUserToGroup: userId => dispatch(addUserToGroup(userId))
 });
 
 export default connect(

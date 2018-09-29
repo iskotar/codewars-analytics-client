@@ -26,6 +26,18 @@ const group = (state = initialState, action) => {
         }
       };
 
+    case 'GROUP_USER_ADD_BY_ID':
+      const members = state.groupCurrentInfo.members;
+      members.push(action.payload);
+
+      return {
+        ...state,
+        groupCurrentInfo: {
+          ...state.groupCurrentInfo,
+          members
+        }
+      };
+
     default:
       return state;
   }

@@ -32,6 +32,18 @@ export function userGetAll() {
       .catch(err => err);
 }
 
+export function userGetAllLightweight() {
+  return dispatch =>
+    get('/user/lightweight')
+      .then(res => {
+        dispatch({
+          type: 'USER_LIST_LIGHTWEIGHT',
+          payload: res.data
+        });
+      })
+      .catch(err => err);
+}
+
 export function userGetCurrent(userId) {
   return dispatch =>
     get(`/user/${userId}`)
