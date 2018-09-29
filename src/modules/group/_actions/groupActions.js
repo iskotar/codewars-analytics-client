@@ -1,3 +1,4 @@
+import { initialize } from 'redux-form';
 import { push } from 'connected-react-router';
 import { get, post } from '../../utils/httpRequest/httpMethods';
 
@@ -11,6 +12,27 @@ export function groupGetAll() {
         });
       })
       .catch(err => err);
+}
+
+export function groupGetById(groupId) {
+  return dispatch =>
+    get(`/group/${groupId}`)
+      .then(res => {
+        dispatch(initialize('group', { ...res.data })); // Fill form
+        dispatch({
+          type: 'GROUP_CURRENT_INFO',
+          payload: res.data
+        });
+      })
+      .catch(err => err);
+}
+
+export function removeUserFromGroup(userId) {
+  return dispatch =>
+    dispatch({
+      type: 'GROUP_USER_REMOVE_BY_ID',
+      payload: userId
+    });
 }
 /*
 

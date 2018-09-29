@@ -4,6 +4,7 @@ import Home from '../modules/pages/home/home';
 import Warning from '../modules/utils/warning/warning';
 
 import GroupList from '../modules/group/list/groupList';
+import GroupForm from '../modules/group/form/groupForm';
 
 import UserRegisterForm from '../modules/user/register/userRegisterForm';
 import UserLoginForm from '../modules/user/login/userLoginForm';
@@ -19,6 +20,7 @@ const Routes = () => (
     <Route exact path="/error" component={Warning} />
 
     <Route exact path="/groups" component={GroupList} />
+    <Route exact path="/group/edit/:groupId" component={GroupForm} />
 
     <Route exact path="/users" component={UserList} />
     <Route exact path="/user/login" component={UserLoginForm} />
