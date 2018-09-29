@@ -1,12 +1,14 @@
 import { push } from 'connected-react-router';
 import { get, post } from '../../utils/httpRequest/httpMethods';
 
-export function userRegister(email, password, codewarsId) {
+export function userRegister(email, password, codewarsId, name, phone) {
   return dispatch =>
     post('/user', {
       email,
       password,
-      codewarsId
+      codewarsId,
+      name,
+      phone
     })
       .then(res => {
         dispatch({

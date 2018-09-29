@@ -19,7 +19,6 @@ class GroupForm extends Component {
 
   componentDidMount() {
     const groupId = this.props.match.params.groupId;
-    console.log(groupId);
     if (!_.isEmpty(groupId)) {
       this.props.groupGetById(groupId);
     }
@@ -57,7 +56,6 @@ class GroupForm extends Component {
 
             <Col xs="12" lg="6" className="mt-4 mt-lg-0">
               <GroupFormUserSelect />
-
               <GroupFormUserList />
             </Col>
 
@@ -72,8 +70,6 @@ class GroupForm extends Component {
               >
                 Save
               </Button>
-
-              <Pre obj={_.get(this.props, 'groupForm.values', {})} off />
             </Col>
           </Row>
         </Form>

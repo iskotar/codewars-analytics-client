@@ -6,25 +6,28 @@ import { Field, reduxForm } from 'redux-form';
 import _ from 'lodash';
 import { Helmet } from 'react-helmet';
 import { TextField } from '../../utils/form/form';
-import { email as validEmail, minLength5, required } from '../../utils/form/validators';
+import {
+  email as validEmail,
+  minLength5,
+  required,
+  realName,
+  phoneNumber
+} from '../../utils/form/validators';
 import { userRegister } from '../_actions/userActions';
 import CodewarsCheckerForm from './codewarsCheckerForm';
 
 class UserRegisterForm extends Component {
-  constructor(props) {
-    super(props);
-    this.formSubmit = this.formSubmit.bind(this);
-  }
-
-  formSubmit(e) {
+  formSubmit = e => {
     e.preventDefault();
 
     const email = this.props.userRegisterForm.values.email;
     const password = this.props.userRegisterForm.values.password;
     const codewarsId = this.props.codewarsUsername;
+    const name = this.props.userRegisterForm.values.name;
+    const phone = this.props.userRegisterForm.values.phone;
 
-    this.props.userRegister(email, password, codewarsId);
-  }
+    this.props.userRegister(email, password, codewarsId, name, phone);
+  };
 
   form() {
     return (
@@ -37,6 +40,24 @@ class UserRegisterForm extends Component {
             <Helmet>
               <title>Registration</title>
             </Helmet>
+
+            <Field
+              name="name"
+              type="text"
+              placeholder="Real name"
+              component={TextField}
+              validate={[required, realName]}
+              descr={'Please enter your real name and surname'}
+            />
+
+            <Field
+              name="phone"
+              type="text"
+              placeholder="Cell phone number"
+              component={TextField}
+              validate={[required, phoneNumber]}
+              descr="Format +1777005511 or +380653332244"
+            />
 
             <Field
               name="email"
@@ -72,13 +93,13 @@ class UserRegisterForm extends Component {
     );
   }
 
-  insteadForm() {
-    return <span>User already registered</span>;
-  }
+  insteadForm = () => <span>User already registered</span>;
 
   render() {
     return (
-      <div>{_.isEmpty(this.props.userAuthorizedInfo) ? this.form() : this.insteadForm()}</div>
+      <div>
+        {_.isEmpty(this.props.userAuthorizedInfo) ? this.form() : this.insteadForm()}
+      </div>
     );
   }
 }
@@ -90,8 +111,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  userRegister: (email, password, codewarsId) =>
-    dispatch(userRegister(email, password, codewarsId))
+  userRegister: (email, password, codewarsId, name, phone) =>
+    dispatch(userRegister(email, password, codewarsId, name, phone))
 });
 
 export default compose(
