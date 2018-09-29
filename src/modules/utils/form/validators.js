@@ -27,8 +27,8 @@ export const alphaNumeric = value =>
   value && /[^a-zA-Z0-9 ]/i.test(value) ? 'Only alphanumeric characters' : undefined;
 
 export const phoneNumber = value =>
-  value && !/^\+[0-9]{10,12}$/.test(value)
-    ? 'Invalid phone number, must start from + and after 10-12 digits. International format.'
+  value && !/^\+[0-9]{11,12}$/.test(value)
+    ? 'Invalid phone number, must start from + and after 11-12 digits. International format.'
     : undefined;
 
 export const realName = value =>
