@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 const initialState = {
   groupList: [], // User list for admin
   groupCurrentInfo: {}

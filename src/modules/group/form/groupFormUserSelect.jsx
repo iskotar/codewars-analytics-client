@@ -8,23 +8,26 @@ class GroupFormUserSelect extends Component {
   render() {
     return (
       <div className="form-group">
-        {_.get(this.props, 'userListLightweight') && (
-          <ListGroup>
-            {this.props.userListLightweight.map(el => (
-              <ListGroupItem key={el._id}>
-                {el.codewarsId}
-                <Button
-                  color="primary"
-                  size="sm"
-                  className="float-right"
-                  onClick={() => this.props.addUserToGroup(el._id)}
-                >
-                  Add
-                </Button>
-              </ListGroupItem>
-            ))}
-          </ListGroup>
-        )}
+        {_.get(this.props, 'userListLightweight') &&
+          _.get(this.props, 'groupCurrentInfo.members') && (
+            <ListGroup>
+              {this.props.userListLightweight.map(el => (
+                <ListGroupItem key={el._id}>
+                  {el.codewarsId}
+                  {!this.props.groupCurrentInfo.members.includes(el._id) && (
+                    <Button
+                      color="primary"
+                      size="sm"
+                      className="float-right"
+                      onClick={() => this.props.addUserToGroup(el._id)}
+                    >
+                      Add
+                    </Button>
+                  )}
+                </ListGroupItem>
+              ))}
+            </ListGroup>
+          )}
       </div>
     );
   }

@@ -7,8 +7,8 @@ import { ListGroup, ListGroupItem } from 'reactstrap';
 
 class GroupFormUserList extends Component {
   userList = () => {
-    const members = this.props.groupCurrentInfo.members;
-    const all = this.props.userListLightweight;
+    const members = _.get(this.props, 'groupCurrentInfo.members', []);
+    const all = _.get(this.props, 'userListLightweight', []);
     return all.filter(el => members.includes(el._id)) || [];
   };
 

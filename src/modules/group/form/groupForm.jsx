@@ -6,8 +6,7 @@ import { Field, reduxForm } from 'redux-form';
 import _ from 'lodash';
 import { TextField } from '../../utils/form/form';
 import { required } from '../../utils/form/validators';
-import Pre from '../../utils/pre/pre';
-import { groupGetById } from './../_actions/groupActions';
+import { groupGetById, groupUpdateById } from './../_actions/groupActions';
 import { userGetAllLightweight } from './../../user/_actions/userActions';
 import GroupFormUserSelect from './groupFormUserSelect';
 import GroupFormUserList from './groupFormUserList';
@@ -26,7 +25,14 @@ class GroupForm extends Component {
 
   formSubmit = e => {
     e.preventDefault();
-    console.log('SUbmit');
+
+    const { _id, members } = this.props.groupCurrentInfo;
+
+    this.props.groupUpdateById(_id, {
+      name: this.props.groupForm.values.name,
+      description: this.props.groupForm.values.description,
+      members
+    });
   };
 
   render() {
@@ -92,7 +98,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   groupGetById: groupId => dispatch(groupGetById(groupId)),
-  userGetAllLightweight: () => dispatch(userGetAllLightweight())
+  userGetAllLightweight: () => dispatch(userGetAllLightweight()),
+  groupUpdateById: (groupId, groupForm) => dispatch(groupUpdateById(groupId, groupForm))
 });
 
 export default compose(

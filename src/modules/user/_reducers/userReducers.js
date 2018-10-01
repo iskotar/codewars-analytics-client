@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 const initialState = {
   userList: [], // User list for admin
   userListLightweight: [], // for group edit
@@ -16,7 +18,11 @@ const user = (state = initialState, action) => {
     case 'USER_LIST_LIGHTWEIGHT':
       return {
         ...state,
-        userListLightweight: action.payload
+        userListLightweight: _.sortBy(
+          action.payload,
+          ['codewarsId'],
+          ['asc']
+        )
       };
 
     case 'USER_AUTHORIZED_INFO':
