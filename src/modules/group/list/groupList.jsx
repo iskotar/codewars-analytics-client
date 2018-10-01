@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import { groupGetAll } from '../_actions/groupActions';
-import { ListGroup, ListGroupItem } from 'reactstrap';
+import { ListGroup, ListGroupItem, Badge } from 'reactstrap';
 import { Row, Col } from 'reactstrap';
 
 class GroupList extends Component {
@@ -19,9 +19,12 @@ class GroupList extends Component {
             <ListGroupItem key={el._id}>
               <Row>
                 <Col>
-                  <h4>{el.name}</h4>
-
-                  {el.members.toString()}
+                  <h4>
+                    {el.name}{' '}
+                    <Badge color="secondary" pill>
+                      {el.members.length}
+                    </Badge>
+                  </h4>
                 </Col>
                 <Col>
                   <Link to={`/group/edit/${el._id}`}>Edit</Link>

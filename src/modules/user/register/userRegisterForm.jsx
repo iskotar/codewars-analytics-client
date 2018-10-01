@@ -47,7 +47,7 @@ class UserRegisterForm extends Component {
               placeholder="Real name"
               component={TextField}
               validate={[required, realName]}
-              descr={'Please enter your real name and surname'}
+              descr="Please enter your real name and surname. Example: John Smith"
             />
 
             <Field
