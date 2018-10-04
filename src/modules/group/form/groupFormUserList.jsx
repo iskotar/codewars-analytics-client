@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button, Col, Form, Row } from 'reactstrap';
+import { Button } from 'reactstrap';
 import _ from 'lodash';
 import { groupGetById, removeUserFromGroup } from './../_actions/groupActions';
 import { ListGroup, ListGroupItem } from 'reactstrap';

@@ -10,6 +10,7 @@ import { groupGetById, groupUpdateById } from './../_actions/groupActions';
 import { userGetAllLightweight } from './../../user/_actions/userActions';
 import GroupFormUserSelect from './groupFormUserSelect';
 import GroupFormUserList from './groupFormUserList';
+import Permission from './../../permission/permission';
 
 class GroupForm extends Component {
   componentDidMount() {
@@ -37,7 +38,7 @@ class GroupForm extends Component {
 
   render() {
     return (
-      <div>
+      <Permission perm='group.update.any'>
         <h1>Edit Group</h1>
 
         <Form onSubmit={this.formSubmit}>
@@ -85,7 +86,7 @@ class GroupForm extends Component {
             <Col xl="12" />
           </Row>
         </Form>
-      </div>
+      </Permission>
     );
   }
 }

@@ -4,6 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { groupGetAll } from '../_actions/groupActions';
 import { ListGroup, ListGroupItem, Badge } from 'reactstrap';
 import { Row, Col } from 'reactstrap';
+import Permission from './../../permission/permission';
 
 class GroupList extends Component {
   componentDidMount() {
@@ -12,7 +13,7 @@ class GroupList extends Component {
 
   render() {
     return (
-      <div>
+      <Permission perm="group.get.all">
         <h1>Groups</h1>
         <ListGroup>
           {this.props.groupList.map(el => (
@@ -21,19 +22,32 @@ class GroupList extends Component {
                 <Col>
                   <h4>
                     {el.name}{' '}
-                    <Badge color="secondary" pill>
+                    <Badge color="light" pill>
                       {el.members.length}
                     </Badge>
                   </h4>
                 </Col>
                 <Col>
-                  <Link to={`/group/edit/${el._id}`}>Edit</Link>
+                  <Permission perm="group.update.any">
+                    <Link to={`/group/edit/${el._id}`}>Edit</Link>
+                  </Permission>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <ul className="pl-0">
+                    {el.members.map(item => (
+                      <Badge color="light" key={item.codewarsId} className="mr-2">
+                        {item.codewarsId}
+                      </Badge>
+                    ))}
+                  </ul>
                 </Col>
               </Row>
             </ListGroupItem>
           ))}
         </ListGroup>
-      </div>
+      </Permission>
     );
   }
 }
