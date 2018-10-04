@@ -1,6 +1,7 @@
 import _ from 'lodash';
 
 const initialState = {
+  acl: [], // access control list
   userList: [], // User list for admin
   userListLightweight: [], // for group edit
   userAuthorizedInfo: {}, // auth user info
@@ -9,6 +10,12 @@ const initialState = {
 
 const user = (state = initialState, action) => {
   switch (action.type) {
+    case 'USER_ACL':
+      return {
+        ...state,
+        acl: action.payload
+      };
+
     case 'USER_LIST':
       return {
         ...state,

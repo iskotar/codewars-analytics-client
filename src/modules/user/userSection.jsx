@@ -44,14 +44,14 @@ class UserSection extends Component {
     return (
       <Nav className="ml-auto" navbar>
         <NavItem>
-          <Link to="/user/register" className="nav-link">
-            Register
+          <Link to="/user/login" className="nav-link">
+            Login
           </Link>
         </NavItem>
 
         <NavItem>
-          <Link to="/user/login" className="nav-link">
-            Login
+          <Link to="/user/register" className="btn btn-outline-primary">
+            Register
           </Link>
         </NavItem>
       </Nav>

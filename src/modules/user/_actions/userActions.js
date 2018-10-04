@@ -68,6 +68,22 @@ export function userGetAuthUserInfo(userId) {
       .catch(err => err);
 }
 
+export function userACL(acl) {
+  return dispatch =>
+    dispatch({
+      type: 'USER_ACL',
+      payload: acl
+    });
+}
+
+export function userFillAuthUserInfo(user) {
+  return dispatch =>
+    dispatch({
+      type: 'USER_AUTHORIZED_INFO',
+      payload: user
+    });
+}
+
 export function userLogin(email, password) {
   return dispatch =>
     post('/user/login', {
@@ -80,7 +96,8 @@ export function userLogin(email, password) {
         return res;
       })
       .then(res => {
-        dispatch(userGetAuthUserInfo(res.data.userId));
+        dispatch(userFillAuthUserInfo(res.data.user));
+        dispatch(userACL(res.data.acl));
         return res.data.userId;
       })
       .then(userId => {
