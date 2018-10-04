@@ -64,6 +64,7 @@ export function userGetAuthUserInfo(userId) {
           type: 'USER_AUTHORIZED_INFO',
           payload: res.data
         });
+        dispatch(userACL(res.data.acl));
       })
       .catch(err => err);
 }
@@ -93,9 +94,6 @@ export function userLogin(email, password) {
       .then(res => {
         localStorage.setItem('token', res.data.token);
         localStorage.setItem('userId', res.data.userId);
-        return res;
-      })
-      .then(res => {
         dispatch(userFillAuthUserInfo(res.data.user));
         dispatch(userACL(res.data.acl));
         return res.data.userId;
