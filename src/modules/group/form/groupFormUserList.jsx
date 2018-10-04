@@ -25,6 +25,7 @@ class GroupFormUserList extends Component {
                 size="sm"
                 className="float-right"
                 onClick={() => this.props.removeUserFromGroup(el._id)}
+                outline
               >
                 Remove
               </Button>

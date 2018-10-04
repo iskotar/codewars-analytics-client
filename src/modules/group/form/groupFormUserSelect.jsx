@@ -20,6 +20,7 @@ class GroupFormUserSelect extends Component {
                       size="sm"
                       className="float-right"
                       onClick={() => this.props.addUserToGroup(el._id)}
+                      outline
                     >
                       Add
                     </Button>

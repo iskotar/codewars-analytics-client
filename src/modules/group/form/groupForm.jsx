@@ -38,7 +38,7 @@ class GroupForm extends Component {
 
   render() {
     return (
-      <Permission perm='group.update.any'>
+      <Permission perm="group.update.any">
         <h1>Edit Group</h1>
 
         <Form onSubmit={this.formSubmit}>
@@ -53,7 +53,7 @@ class GroupForm extends Component {
               />
             </Col>
 
-            <Col xs="6" lg="3">
+            <Col xs="6" lg="6">
               <Field
                 name="description"
                 type="text"
@@ -62,7 +62,17 @@ class GroupForm extends Component {
               />
             </Col>
 
-            <Col xs="6" lg="3">
+            <Col xs="12" lg="6" className="mt-4 mt-lg-0">
+              <GroupFormUserSelect />
+            </Col>
+
+            <Col xs="12" lg="6" className="mt-4 mt-lg-0">
+              <GroupFormUserList />
+            </Col>
+          </Row>
+
+          <Row>
+            <Col xs="12" lg="12" className="mt-4">
               <Button
                 type="submit"
                 color="primary"
@@ -74,16 +84,6 @@ class GroupForm extends Component {
                 Save
               </Button>
             </Col>
-
-            <Col xs="12" lg="6" className="mt-4 mt-lg-0">
-              <GroupFormUserSelect />
-            </Col>
-
-            <Col xs="12" lg="6" className="mt-4 mt-lg-0">
-              <GroupFormUserList />
-            </Col>
-
-            <Col xl="12" />
           </Row>
         </Form>
       </Permission>
