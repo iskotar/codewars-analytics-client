@@ -21,7 +21,7 @@ class GroupList extends Component {
               <Row>
                 <Col>
                   <h4>
-                    {el.name}{' '}
+                    <Link to={`/group/${el._id}`}>{el.name}</Link>{' '}
                     <Badge color="light" pill>
                       {el.members.length}
                     </Badge>
