@@ -24,6 +24,14 @@ class MainMenu extends Component {
 
         {_.has(this.props.userAuthorizedInfo, '_id') && (
           <NavItem>
+            <NavLink to="/quiz" activeClassName="active" className="nav-link">
+              Quiz
+            </NavLink>
+          </NavItem>
+        )}
+
+        {_.has(this.props.userAuthorizedInfo, '_id') && (
+          <NavItem>
             <NavLink to="/users" activeClassName="active" className="nav-link">
               Users
             </NavLink>
